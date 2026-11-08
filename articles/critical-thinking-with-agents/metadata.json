@@ -1,0 +1,30 @@
+{
+  "id": "critical-thinking-with-agents",
+  "title": "当 Agent 替你工作时，如何保持批判性思维",
+  "original_title": "Critical thinking when agents do the work",
+  "author": "Addy Osmani",
+  "source_url": "https://x.com/addyosmani/status/2117512471930167377",
+  "reader_url": "https://threadnavigator.com/thread/2117512471930167377/",
+  "added_on": "2026-11-08",
+  "tags": [
+    "AI agents",
+    "critical thinking",
+    "engineering"
+  ],
+  "files": [
+    {
+      "path": "translation.zh-CN.html",
+      "kind": "translation",
+      "language": "zh-CN",
+      "label": "完整中文翻译 · 重点高亮",
+      "original_filename": "当Agent替你工作时_完整中文翻译_重点高亮.html"
+    },
+    {
+      "path": "visual-guide.zh-CN.html",
+      "kind": "visual-guide",
+      "language": "zh-CN",
+      "label": "中文可视化解读 · 互动练习",
+      "original_filename": "智能体时代的批判性思考.html"
+    }
+  ]
+}
