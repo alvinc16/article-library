@@ -1,6 +1,8 @@
 # Article Library · 文章资料库
 
-按文章集中管理原文链接、中文翻译、解读与生成的 HTML。仓库默认保持私有，不启用公开网站。
+按文章集中管理原文链接、中文翻译、解读与生成的 HTML。仓库现已公开，并通过 GitHub Pages 发布公开网站。
+
+在线阅读：[文章资料库](https://alvinc16.github.io/article-library/index.html)。
 
 ## 文章目录
 
