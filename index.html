@@ -5,23 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>文章资料库 · Article Library</title>
 <style>
-:root{color-scheme:light;--ink:#253432;--green:#166b58;--muted:#697570;--line:#dbe1d7}*{box-sizing:border-box}body{margin:0;background:#f6f3ed;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}main{max-width:900px;margin:auto;padding:64px 24px}header{margin-bottom:38px}.eyebrow{font-size:12px;letter-spacing:.15em;color:var(--green);font-weight:700}h1{font-size:clamp(32px,6vw,48px);line-height:1.2;margin:16px 0}header p,.meta,footer{color:var(--muted)}article{background:#fffcf7;border:1px solid var(--line);border-radius:16px;padding:30px;margin:22px 0}h2{font-size:26px;line-height:1.5;margin:8px 0 14px}.meta{font-size:14px}.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.links a{color:var(--green);text-decoration:none;border:1px solid #bccbc3;border-radius:8px;padding:10px 16px}.links a:first-child{color:white;background:var(--green);border-color:var(--green)}a:hover{text-decoration:underline}a:focus-visible{outline:3px solid #d2b454;outline-offset:4px}footer{border-top:1px solid var(--line);padding-top:22px;margin-top:40px;font-size:13px}@media(max-width:480px){main{padding:36px 18px}article{padding:23px}h2{font-size:23px}.links{display:grid}.links a{text-align:center}}
+:root{color-scheme:light;--paper:#f5f3ec;--card:#fffcf6;--ink:#263d36;--muted:#607068;--line:#d3dbd1;--green:#235c48;--soft:#e8ede3;--accent:#a95a32}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}button,input,select{font:inherit}button,a,input,select{-webkit-tap-highlight-color:transparent}a{color:var(--green);text-underline-offset:4px}button{cursor:pointer}a:hover{text-decoration:underline}button:hover{border-color:var(--green)}:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.skip{position:absolute;left:16px;top:-100px;background:var(--card);padding:12px;z-index:2}.skip:focus{top:12px}.shell{max-width:1200px;margin:auto;padding:0 40px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px 0;border-bottom:1px solid var(--line);font-size:13px}.brand{font-weight:750;letter-spacing:.12em}.smallmark{color:var(--muted);font-size:12px}.hero{display:grid;grid-template-columns:1fr auto;gap:32px;padding:54px 0 42px;align-items:end}.eyebrow{font-size:11px;letter-spacing:.16em;font-weight:750;color:var(--accent)}h1{font-family:Georgia,"Songti SC",STSong,serif;font-size:clamp(40px,6vw,64px);font-weight:500;letter-spacing:-.04em;line-height:1.2;margin:12px 0 20px}.intro{max-width:570px;color:var(--muted);margin:0;font-size:15px}.stats{display:flex;gap:32px;padding:0 0 6px}.stat{border-left:1px solid var(--line);padding-left:22px}.stat strong{display:block;font-size:30px;font-weight:500;line-height:1.3}.stat span{font-size:12px;color:var(--muted)}.layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:48px;padding:36px 0 65px;border-top:1px solid var(--line)}h2.section-title{font-size:13px;margin:0 0 18px;letter-spacing:.08em}.filters{display:flex;flex-direction:column;gap:8px}.tag-filter{display:flex;align-items:center;justify-content:space-between;gap:14px;border:1px solid transparent;background:transparent;color:var(--muted);border-radius:7px;text-align:left;padding:9px 12px;min-height:44px}.tag-filter[aria-pressed="true"]{color:var(--green);background:var(--soft);border-color:#c5d2c0;font-weight:650}.count{font-size:12px;font-variant-numeric:tabular-nums}.aside-note{border-top:1px solid var(--line);margin:30px 0 0;padding-top:20px;font-size:12px;color:var(--muted)}.toolbar{display:flex;gap:12px;align-items:center;margin-bottom:22px}.search-wrap{flex:1;min-width:0}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}input,select{border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--ink);min-height:44px;padding:9px 12px;font-size:13px}input{width:100%}input::placeholder{color:var(--muted)}select{max-width:100%}.results-head{display:flex;justify-content:space-between;gap:20px;align-items:baseline;margin-bottom:24px}.results-head h2{font-size:18px;margin:0;font-weight:600}.results-head p{font-size:12px;color:var(--muted);margin:0}.year-group{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;margin-top:20px}.year-group h3{margin:0;font-size:18px;font-weight:500;line-height:1.5}.year-group h3 small{display:block;font-size:10px;letter-spacing:.1em;color:var(--muted)}.entries{border-left:1px solid #bdc9be;padding-left:24px}.entry{position:relative;margin-bottom:24px}.entry:before{content:"";position:absolute;left:-30px;top:10px;background:var(--paper);border:2px solid var(--green);width:11px;height:11px;border-radius:50%}.date{font-size:12px;color:var(--muted);margin-bottom:12px;display:block;font-variant-numeric:tabular-nums}.article-card{border:1px solid var(--line);border-radius:10px;background:var(--card);padding:26px 28px;box-shadow:0 4px 15px #263d3603}.category{font-size:10px;letter-spacing:.12em;font-weight:700;color:var(--accent)}.article-card h4{font-family:Georgia,"Songti SC",STSong,serif;font-size:clamp(22px,3vw,29px);font-weight:600;line-height:1.5;margin:12px 0 10px}.meta{font-size:12px;color:var(--muted);overflow-wrap:anywhere}.summary{font-size:14px;color:var(--muted);margin:20px 0}.tags{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}.tag{font-size:11px;border-radius:4px;background:var(--soft);color:var(--green);padding:3px 8px}.links{display:flex;gap:10px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line)}.links a{display:inline-flex;align-items:center;justify-content:center;gap:16px;border:1px solid #b7c8bb;border-radius:6px;padding:10px 15px;font-size:13px;text-decoration:none;min-height:44px}.links a:first-child{background:var(--green);border-color:var(--green);color:#fff}.links a:hover{filter:brightness(.94);text-decoration:underline}.empty{border:1px dashed var(--line);border-radius:10px;padding:36px;text-align:center}.empty p{font-size:14px;color:var(--muted)}.reset{padding:8px 18px;border:1px solid var(--green);border-radius:5px;background:var(--card);color:var(--green);min-height:44px}[hidden]{display:none!important}footer{border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;padding:24px 0 34px;font-size:11px;color:var(--muted)}noscript p{padding:16px;border:1px solid var(--line)}@media(max-width:800px){.shell{padding:0 24px}.hero{padding:38px 0 32px}.stats{gap:18px}.stat{padding-left:16px}.layout{grid-template-columns:1fr;gap:26px;padding-top:25px}.filters{flex-direction:row;flex-wrap:wrap;gap:6px}.tag-filter{gap:14px}.aside-note{display:none}h2.section-title{margin-bottom:10px}}@media(max-width:520px){.shell{padding:0 18px}.topbar{padding:20px 0}.smallmark{font-size:10px}.hero{display:block}.stats{margin-top:28px}.stat:first-child{border:0;padding-left:0}.toolbar{flex-wrap:wrap}.search-wrap{flex-basis:100%}.toolbar select{width:100%}.results-head{gap:10px}.year-group{grid-template-columns:1fr;gap:12px}.year-group h3 small{display:inline;margin-left:8px}.entries{margin-left:5px;padding-left:18px}.entry:before{left:-24px}.article-card{padding:22px 19px}.links{flex-direction:column}.links a{justify-content:space-between}footer{flex-direction:column;gap:8px}.empty{padding:24px 16px}}@media(prefers-reduced-motion:no-preference){button,a{transition:background-color .15s,border-color .15s}}
 </style>
 </head>
 <body>
-<main>
-<header><div class="eyebrow">ARTICLE LIBRARY</div><h1>文章资料库</h1><p>一篇文章，一个目录。把来源、翻译和解读放在一起，方便回看与积累。</p></header>
-<article>
-<div class="eyebrow">001 · AI 与思考</div>
-<h2>当 Agent 替你工作时，<br>如何保持批判性思维</h2>
-<div class="meta">Addy Osmani · Critical thinking when agents do the work</div>
-<p>两种阅读方式：完整中文翻译用于细读，可视化解读用于梳理观点与实践。</p>
-<nav class="links" aria-label="选择阅读版本">
-<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a>
-<a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a>
-</nav>
-</article>
-<footer>私有阅读资料库 · 下载后可离线阅读。添加新文章的方法见仓库 README。原文版权归原作者所有。</footer>
+<a class="skip" href="#content">跳转到文章列表</a>
+<div class="shell">
+<header>
+<div class="topbar"><span class="brand">文章资料库 <span aria-hidden="true">／</span> <span lang="en">ARTICLE LIBRARY</span></span><span class="smallmark">阅读 · 思考 · 积累</span></div>
+<div class="hero"><div><div class="eyebrow">A PERSONAL READING COLLECTION</div><h1>让读过的，留下来。</h1><p class="intro">把值得回看的文章放在一起。按主题发现，沿时间重访，从完整翻译到可视化解读，找到适合此刻的阅读方式。</p></div><div class="stats" aria-label="资料库统计"><div class="stat"><strong id="article-count">1</strong><span>篇文章</span></div><div class="stat"><strong id="tag-count">3</strong><span>个主题</span></div></div></div>
+</header>
+<main class="layout" id="content">
+<aside aria-label="主题筛选"><h2 class="section-title">按主题浏览</h2><div id="filters" class="filters"></div><p class="aside-note">时间线按收录日期排列。<br>每篇文章保留两种阅读入口，方便细读与回顾。<br><br>下载整个仓库后，可离线使用本目录。</p></aside>
+<section aria-labelledby="timeline-title">
+<div class="toolbar"><div class="search-wrap"><label class="sr-only" for="search">搜索标题、作者或标签</label><input id="search" type="search" placeholder="搜索标题、作者或标签…" autocomplete="off"></div><label class="sr-only" for="sort">时间线排序</label><select id="sort"><option value="desc">最新收录在前</option><option value="asc">最早收录在前</option></select></div>
+<div class="results-head"><h2 id="timeline-title">阅读时间线</h2><p id="result-count" role="status" aria-live="polite" aria-atomic="true"></p></div>
+<div id="timeline"></div><div id="empty" class="empty" hidden><strong>暂时没有匹配的文章</strong><p>试试其他关键词，或清除筛选重新浏览。</p><button type="button" id="reset" class="reset">查看全部文章</button></div>
+<noscript><p>启用 JavaScript 可使用标签、搜索和时间线筛选。也可以直接阅读：<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a> · <a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a>。</p></noscript>
+</section>
 </main>
+<footer><span>个人阅读资料库 · 原文版权归原作者所有</span><span>本地离线可用 · 维护方法见仓库 README</span></footer>
+</div>
+<script>
+'use strict';
+// 添加文章：复制此对象并填写字段；日期格式 YYYY-MM-DD，路径相对 index.html。
+// 标签保留 metadata.json 的原始值；中文显示名在 TAG_LABELS 中维护。
+// 不使用 fetch，确保直接以 file:// 打开也能使用全部筛选功能。
+const ARTICLES = [
+  {
+    id: 'critical-thinking-with-agents',
+    title: '当 Agent 替你工作时，如何保持批判性思维',
+    original_title: 'Critical thinking when agents do the work',
+    author: 'Addy Osmani',
+    added_on: '2026-11-08',
+    tags: ['AI agents', 'critical thinking', 'engineering'],
+    summary: '两种阅读方式：完整中文翻译用于细读，可视化解读用于梳理观点与实践。',
+    translation: 'articles/critical-thinking-with-agents/translation.zh-CN.html',
+    guide: 'articles/critical-thinking-with-agents/visual-guide.zh-CN.html'
+  }
+];
+const TAG_LABELS = { 'AI agents': 'AI 智能体', 'critical thinking': '批判性思维', 'engineering': '工程实践' };
+const label = tag => TAG_LABELS[tag] || tag;
+const tags = [...new Set(ARTICLES.flatMap(article => article.tags))];
+const state = { tag: null, query: '', sort: 'desc' };
+const $ = id => document.getElementById(id);
+function element(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+function filterButton(tag, count) {
+  const button = element('button', 'tag-filter');
+  button.type = 'button';
+  button.setAttribute('aria-pressed', String(state.tag === tag));
+  button.append(element('span', '', tag === null ? '全部文章' : label(tag)), element('span', 'count', String(count)));
+  button.addEventListener('click', () => {
+    state.tag = tag;
+    // 保留按钮节点与键盘焦点；只更新选择状态。
+    [...$('filters').children].forEach((node, index) => node.setAttribute('aria-pressed', String(index === (tag === null ? 0 : tags.indexOf(tag) + 1))));
+    render();
+  });
+  return button;
+}
+function selectArticles() {
+  const query = state.query.trim().toLocaleLowerCase();
+  return ARTICLES.filter(article => (!state.tag || article.tags.includes(state.tag)) &&
+    [article.title, article.original_title, article.author, ...article.tags, ...article.tags.map(label)].join(' ').toLocaleLowerCase().includes(query))
+    .slice().sort((a, b) => (state.sort === 'asc' ? 1 : -1) * a.added_on.localeCompare(b.added_on) || a.id.localeCompare(b.id));
+}
+function articleEntry(article) {
+  const entry = element('div', 'entry');
+  const date = element('time', 'date', `${article.added_on.slice(5, 7)} 月 ${article.added_on.slice(8, 10)} 日 · 收录`);
+  date.dateTime = article.added_on;
+  const card = element('article', 'article-card');
+  card.append(element('div', 'category', 'READ & REFLECT · 阅读与思考'), element('h4', '', article.title), element('div', 'meta', `${article.author} · ${article.original_title}`), element('p', 'summary', article.summary));
+  const tagList = element('div', 'tags');
+  tagList.setAttribute('aria-label', '文章标签');
+  article.tags.forEach(tag => tagList.append(element('span', 'tag', label(tag))));
+  const links = element('nav', 'links');
+  links.setAttribute('aria-label', `${article.title}：阅读版本`);
+  [[article.translation, '完整中文翻译'], [article.guide, '可视化解读']].forEach(([path, title]) => {
+    const link = element('a', '', title);
+    link.href = path;
+    const arrow = element('span', '', '↗');
+    arrow.setAttribute('aria-hidden', 'true');
+    link.append(arrow);
+    links.append(link);
+  });
+  card.append(tagList, links);
+  entry.append(date, card);
+  return entry;
+}
+function render() {
+  const articles = selectArticles();
+  $('result-count').textContent = `显示 ${articles.length} / ${ARTICLES.length} 篇`;
+  $('empty').hidden = articles.length !== 0;
+  $('timeline').replaceChildren();
+  let currentYear = null;
+  let entries;
+  for (const article of articles) {
+    const year = article.added_on.slice(0, 4);
+    if (year !== currentYear) {
+      currentYear = year;
+      const group = element('section', 'year-group');
+      group.setAttribute('aria-label', `${year} 年收录`);
+      const heading = element('h3', '', year);
+      heading.append(element('small', '', '收录年份'));
+      entries = element('div', 'entries');
+      group.append(heading, entries);
+      $('timeline').append(group);
+    }
+    entries.append(articleEntry(article));
+  }
+}
+$('article-count').textContent = ARTICLES.length;
+$('tag-count').textContent = tags.length;
+$('filters').append(filterButton(null, ARTICLES.length), ...tags.map(tag => filterButton(tag, ARTICLES.filter(article => article.tags.includes(tag)).length)));
+$('search').addEventListener('input', event => { state.query = event.target.value; render(); });
+$('sort').addEventListener('change', event => { state.sort = event.target.value; render(); });
+$('reset').addEventListener('click', () => {
+  state.tag = null; state.query = ''; $('search').value = '';
+  [...$('filters').children].forEach((node, index) => node.setAttribute('aria-pressed', String(index === 0)));
+  render(); $('search').focus();
+});
+render();
+</script>
 </body>
 </html>
