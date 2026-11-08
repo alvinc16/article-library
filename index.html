@@ -13,15 +13,15 @@
 <div class="shell">
 <header>
 <div class="topbar"><span class="brand">文章资料库 <span aria-hidden="true">／</span> <span lang="en">ARTICLE LIBRARY</span></span><span class="smallmark">阅读 · 思考 · 积累</span></div>
-<div class="hero"><div><div class="eyebrow">A PERSONAL READING COLLECTION</div><h1>让读过的，留下来。</h1><p class="intro">把值得回看的文章放在一起。按主题发现，沿时间重访，从完整翻译到可视化解读，找到适合此刻的阅读方式。</p></div><div class="stats" aria-label="资料库统计"><div class="stat"><strong id="article-count">1</strong><span>篇文章</span></div><div class="stat"><strong id="tag-count">3</strong><span>个主题</span></div></div></div>
+<div class="hero"><div><div class="eyebrow">A PERSONAL READING COLLECTION</div><h1>让读过的，留下来。</h1><p class="intro">把值得回看的文章放在一起。按主题发现，沿时间重访，从完整翻译到可视化解读，找到适合此刻的阅读方式。</p></div><div class="stats" aria-label="资料库统计"><div class="stat"><strong id="article-count">2</strong><span>篇文章</span></div><div class="stat"><strong id="tag-count">7</strong><span>个主题</span></div></div></div>
 </header>
 <main class="layout" id="content">
-<aside aria-label="主题筛选"><h2 class="section-title">按主题浏览</h2><div id="filters" class="filters"></div><p class="aside-note">时间线按收录日期排列。<br>每篇文章保留两种阅读入口，方便细读与回顾。<br><br>下载整个仓库后，可离线使用本目录。</p></aside>
+<aside aria-label="主题筛选"><h2 class="section-title">按主题浏览</h2><div id="filters" class="filters"></div><p class="aside-note">时间线按收录日期排列。<br>每篇按内容提供阅读入口，方便细读与回顾。<br><br>下载整个仓库后，可离线使用本目录。</p></aside>
 <section aria-labelledby="timeline-title">
 <div class="toolbar"><div class="search-wrap"><label class="sr-only" for="search">搜索标题、作者或标签</label><input id="search" type="search" placeholder="搜索标题、作者或标签…" autocomplete="off"></div><label class="sr-only" for="sort">时间线排序</label><select id="sort"><option value="desc">最新收录在前</option><option value="asc">最早收录在前</option></select></div>
 <div class="results-head"><h2 id="timeline-title">阅读时间线</h2><p id="result-count" role="status" aria-live="polite" aria-atomic="true"></p></div>
 <div id="timeline"></div><div id="empty" class="empty" hidden><strong>暂时没有匹配的文章</strong><p>试试其他关键词，或清除筛选重新浏览。</p><button type="button" id="reset" class="reset">查看全部文章</button></div>
-<noscript><p>启用 JavaScript 可使用标签、搜索和时间线筛选。也可以直接阅读：<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a> · <a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a>。</p></noscript>
+<noscript><p>启用 JavaScript 可使用标签、搜索和时间线筛选。也可以直接阅读：<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a> · <a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a> · <a href="articles/togospace-architecture/analysis.zh-CN.html">TogoSpace 源码设计图解</a>。</p></noscript>
 </section>
 </main>
 <footer><span>个人阅读资料库 · 原文版权归原作者所有</span><span>本地离线可用 · 维护方法见仓库 README</span></footer>
@@ -32,6 +32,7 @@
 // 标签保留 metadata.json 的原始值；中文显示名在 TAG_LABELS 中维护。
 // 不使用 fetch，确保直接以 file:// 打开也能使用全部筛选功能。
 const ARTICLES = [
+  {"id": "togospace-architecture", "title": "TogoSpace 源码设计：Agent 交互、Prompt、Session 与记忆", "original_title": "TogoSpace — Your Agent teams, ready to go", "author": "alexazhou / TogoSpace", "added_on": "2026-11-08", "tags": ["AI agents", "engineering", "architecture", "sessions", "memory", "prompts"], "summary": "沿源码梳理 Agent 间通信、任务队列、Session 边界与记忆压缩，附 Prompt 目录和固定版本源码。", "links": [{"path": "articles/togospace-architecture/analysis.zh-CN.html", "label": "源码设计图解"}, {"path": "articles/togospace-architecture/analysis.zh-CN.html#prompts", "label": "Prompt 清单与原文入口"}]},
   {
     id: 'critical-thinking-with-agents',
     title: '当 Agent 替你工作时，如何保持批判性思维',
@@ -44,7 +45,7 @@ const ARTICLES = [
     guide: 'articles/critical-thinking-with-agents/visual-guide.zh-CN.html'
   }
 ];
-const TAG_LABELS = { 'AI agents': 'AI 智能体', 'critical thinking': '批判性思维', 'engineering': '工程实践' };
+const TAG_LABELS = { 'AI agents': 'AI 智能体', 'critical thinking': '批判性思维', 'engineering': '工程实践', 'architecture': '架构设计', 'sessions': '会话管理', 'memory': '记忆系统', 'prompts': '提示词' };
 const label = tag => TAG_LABELS[tag] || tag;
 const tags = [...new Set(ARTICLES.flatMap(article => article.tags))];
 const state = { tag: null, query: '', sort: 'desc' };
@@ -85,7 +86,7 @@ function articleEntry(article) {
   article.tags.forEach(tag => tagList.append(element('span', 'tag', label(tag))));
   const links = element('nav', 'links');
   links.setAttribute('aria-label', `${article.title}：阅读版本`);
-  [[article.translation, '完整中文翻译'], [article.guide, '可视化解读']].forEach(([path, title]) => {
+  (article.links ? article.links.map(item => [item.path, item.label]) : [[article.translation, '完整中文翻译'], [article.guide, '可视化解读']]).forEach(([path, title]) => {
     const link = element('a', '', title);
     link.href = path;
     const arrow = element('span', '', '↗');

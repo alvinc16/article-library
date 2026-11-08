@@ -16,6 +16,16 @@ Addy Osmani · *Critical thinking when agents do the work*
 
 两份 HTML 是同一篇文章的不同阅读版本，原有文件内容保持不变。
 
+### 002 · TogoSpace 源码设计：Agent 交互、Prompt、Session 与记忆
+
+alexazhou / TogoSpace · 基准提交 `4c3f27839329c00ff5bf531d6d99ac4617d3658d`
+
+- [源码设计图解](articles/togospace-architecture/analysis.zh-CN.html)
+- [文章信息与核查范围](articles/togospace-architecture/README.md)
+- [Prompt 清单与源码入口](articles/togospace-architecture/analysis.zh-CN.html#prompts)
+
+静态源码分析，未运行项目；Prompt 部分为原创解释与源码链接，不含全部原文和逐字翻译。
+
 ## 如何阅读
 
 GitHub 的文件页面主要显示 HTML 源码。下载或克隆仓库后，用浏览器打开根目录的 `index.html`，即可进入文章主页。主页支持主题标签筛选、标题／作者／标签搜索，以及按收录日期正序或倒序排列的年度时间线；搜索和标签可组合使用，无结果时可一键清除筛选。两份文章 HTML 均为单文件，可独立离线打开；外部原文链接需要联网。
@@ -47,7 +57,7 @@ article-library/
    - `added_on`：收录日期，严格使用 `YYYY-MM-DD`，时间线按它分组排序（不是原文发布日期）。
    - `tags`：与该篇 `metadata.json` 一致的标签数组；新标签会自动出现在筛选栏。
    - `summary`：一两句阅读提示。
-   - `translation`、`guide`：相对根目录 `index.html` 的两份 HTML 路径。
+   - `translation`、`guide`：相对根目录 `index.html` 的两份 HTML 路径。也可使用 `links` 数组，每项含 `path` 和 `label`，适用于源码分析等不同阅读形式。
 7. 如果标签原值为英文，可在 `TAG_LABELS` 中增加中文显示名；未配置的标签直接显示原值。日期、标签计数和时间线会自动更新，不必手动添加卡片。
 8. 用浏览器直接打开 `index.html`，验证新文章在标签、搜索和时间线中出现，且两份阅读链接均能打开。
 
