@@ -1,0 +1,26 @@
+{
+  "id": "togospace-architecture",
+  "title": "TogoSpace 源码设计：Agent 交互、Prompt、Session 与记忆",
+  "original_title": "TogoSpace — Your Agent teams, ready to go",
+  "author": "alexazhou / TogoSpace",
+  "source_url": "https://github.com/alexazhou/TogoSpace",
+  "source_commit": "4c3f27839329c00ff5bf531d6d99ac4617d3658d",
+  "added_on": "2026-11-08",
+  "tags": [
+    "AI agents",
+    "engineering",
+    "architecture",
+    "sessions",
+    "memory",
+    "prompts"
+  ],
+  "files": [
+    {
+      "path": "analysis.zh-CN.html",
+      "kind": "code-analysis",
+      "language": "zh-CN",
+      "label": "源码设计图解"
+    }
+  ],
+  "scope": "静态源码核查，未运行；Prompt 提供中文解读与固定版本源码链接，不含完整原文翻译。"
+}
