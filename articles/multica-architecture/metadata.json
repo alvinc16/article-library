@@ -1,0 +1,26 @@
+{
+  "id": "multica-architecture",
+  "title": "Multica 源码设计：任务编排、Agent 协作、Session 与记忆",
+  "original_title": "Multica",
+  "author": "multica-ai / Multica",
+  "source_url": "https://github.com/multica-ai/multica",
+  "source_commit": "f68c891d3b735098d0fa6ef8cd8455d7736d1b3b",
+  "added_on": "2026-11-09",
+  "tags": [
+    "AI agents",
+    "engineering",
+    "architecture",
+    "sessions",
+    "memory",
+    "prompts"
+  ],
+  "files": [
+    {
+      "path": "analysis.zh-CN.html",
+      "kind": "code-analysis",
+      "language": "zh-CN",
+      "label": "源码设计图解"
+    }
+  ],
+  "scope": "静态源码与测试代码阅读，未启动应用或运行测试；原创解读与固定版本源码链接。"
+}
