@@ -26,6 +26,16 @@ alexazhou / TogoSpace · 基准提交 `4c3f27839329c00ff5bf531d6d99ac4617d3658d`
 
 静态源码分析，未运行项目；Prompt 部分为原创解释与源码链接，不含全部原文和逐字翻译。
 
+### 003 · Multica 源码设计：任务编排、Agent 协作、Session 与记忆
+
+multica-ai / Multica · 基准提交 `f68c891d3b735098d0fa6ef8cd8455d7736d1b3b`
+
+- [源码设计与交互图](articles/multica-architecture/analysis.zh-CN.html)
+- [范围与来源](articles/multica-architecture/README.md)
+- [与 TogoSpace 对比](articles/multica-architecture/analysis.zh-CN.html#comparison)
+
+含四张架构与流程图。静态源码分析，未运行应用或测试。
+
 ## 如何阅读
 
 GitHub 的文件页面主要显示 HTML 源码。下载或克隆仓库后，用浏览器打开根目录的 `index.html`，即可进入文章主页。主页支持主题标签筛选、标题／作者／标签搜索，以及按收录日期正序或倒序排列的年度时间线；搜索和标签可组合使用，无结果时可一键清除筛选。两份文章 HTML 均为单文件，可独立离线打开；外部原文链接需要联网。

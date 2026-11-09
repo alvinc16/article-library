@@ -21,7 +21,7 @@
 <div class="toolbar"><div class="search-wrap"><label class="sr-only" for="search">搜索标题、作者或标签</label><input id="search" type="search" placeholder="搜索标题、作者或标签…" autocomplete="off"></div><label class="sr-only" for="sort">时间线排序</label><select id="sort"><option value="desc">最新收录在前</option><option value="asc">最早收录在前</option></select></div>
 <div class="results-head"><h2 id="timeline-title">阅读时间线</h2><p id="result-count" role="status" aria-live="polite" aria-atomic="true"></p></div>
 <div id="timeline"></div><div id="empty" class="empty" hidden><strong>暂时没有匹配的文章</strong><p>试试其他关键词，或清除筛选重新浏览。</p><button type="button" id="reset" class="reset">查看全部文章</button></div>
-<noscript><p>启用 JavaScript 可使用标签、搜索和时间线筛选。也可以直接阅读：<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a> · <a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a> · <a href="articles/togospace-architecture/analysis.zh-CN.html">TogoSpace 源码设计图解</a>。</p></noscript>
+<noscript><p>启用 JavaScript 可使用标签、搜索和时间线筛选。也可以直接阅读：<a href="articles/critical-thinking-with-agents/translation.zh-CN.html">完整中文翻译</a> · <a href="articles/critical-thinking-with-agents/visual-guide.zh-CN.html">可视化解读</a> · <a href="articles/togospace-architecture/analysis.zh-CN.html">TogoSpace 源码设计图解</a>。</p><p><a href="articles/multica-architecture/analysis.zh-CN.html">Multica 源码设计图解</a></p></noscript>
 </section>
 </main>
 <footer><span>个人阅读资料库 · 原文版权归原作者所有</span><span>本地离线可用 · 维护方法见仓库 README</span></footer>
@@ -32,6 +32,7 @@
 // 标签保留 metadata.json 的原始值；中文显示名在 TAG_LABELS 中维护。
 // 不使用 fetch，确保直接以 file:// 打开也能使用全部筛选功能。
 const ARTICLES = [
+  {"id": "multica-architecture", "title": "Multica 源码设计：任务编排、Agent 协作、Session 与记忆", "original_title": "Multica", "author": "multica-ai / Multica", "added_on": "2026-11-09", "tags": ["AI agents", "engineering", "architecture", "sessions", "memory", "prompts"], "summary": "从 Issue 和评论追踪多 Agent 派工、执行与交付，附架构/时序图、Session 和记忆边界及 TogoSpace 对照。", "links": [{"path": "articles/multica-architecture/analysis.zh-CN.html", "label": "源码设计与交互图"}, {"path": "articles/multica-architecture/analysis.zh-CN.html#comparison", "label": "与 TogoSpace 对比"}]},
   {"id": "togospace-architecture", "title": "TogoSpace 源码设计：Agent 交互、Prompt、Session 与记忆", "original_title": "TogoSpace — Your Agent teams, ready to go", "author": "alexazhou / TogoSpace", "added_on": "2026-11-08", "tags": ["AI agents", "engineering", "architecture", "sessions", "memory", "prompts"], "summary": "沿源码梳理 Agent 间通信、任务队列、Session 边界与记忆压缩，附 Prompt 目录和固定版本源码。", "links": [{"path": "articles/togospace-architecture/analysis.zh-CN.html", "label": "源码设计图解"}, {"path": "articles/togospace-architecture/analysis.zh-CN.html#prompts", "label": "Prompt 清单与原文入口"}]},
   {
     id: 'critical-thinking-with-agents',
